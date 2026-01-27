@@ -1,0 +1,604 @@
+{
+  "rules": [
+    {
+      "id": "sales_receivable",
+      "name": "売上計上",
+      "description": "請求書発行時の売上計上",
+      "debit_account": "売掛金",
+      "credit_account": "売上高",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "簡売五10%",
+      "priority": 1
+    },
+    {
+      "id": "payment_received",
+      "name": "入金処理",
+      "description": "売掛金の入金消込",
+      "debit_account": "普通預金",
+      "credit_account": "売掛金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 2
+    },
+    {
+      "id": "sales_outsourcing",
+      "name": "業務委託売上",
+      "description": "業務委託料の売上計上",
+      "debit_account": "売掛金",
+      "credit_account": "売上高（業務委託料）",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "簡売五10%",
+      "priority": 3
+    },
+    {
+      "id": "sales_signboard",
+      "name": "看板売上",
+      "description": "看板関連の売上",
+      "debit_account": "諸口",
+      "credit_account": "売上高（看板）",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "簡売五10%",
+      "priority": 4
+    },
+    {
+      "id": "advance_received_transfer",
+      "name": "前受金振替",
+      "description": "前受収益から売上への振替",
+      "debit_account": "前受収益",
+      "credit_account": "売上高",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "簡売五10%",
+      "priority": 5
+    },
+    {
+      "id": "temporary_received",
+      "name": "仮受金計上",
+      "description": "入金内容不明時の仮受金計上",
+      "debit_account": "普通預金",
+      "credit_account": "仮受金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 6
+    },
+    {
+      "id": "temporary_received_clear",
+      "name": "仮受金振替",
+      "description": "仮受金の振替処理",
+      "debit_account": "仮受金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 7
+    },
+    {
+      "id": "purchase",
+      "name": "仕入計上",
+      "description": "仕入の計上",
+      "debit_account": "仕入高",
+      "credit_account": "買掛金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 10
+    },
+    {
+      "id": "purchase_direct",
+      "name": "仕入計上（諸口）",
+      "description": "仕入の計上（諸口経由）",
+      "debit_account": "仕入高",
+      "credit_account": "諸口",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 10
+    },
+    {
+      "id": "purchase_payment",
+      "name": "買掛金支払",
+      "description": "買掛金の支払処理",
+      "debit_account": "買掛金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 11
+    },
+    {
+      "id": "outsourcing_expense",
+      "name": "外注費",
+      "description": "外注費の支払",
+      "debit_account": "外注費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 12
+    },
+    {
+      "id": "rent",
+      "name": "賃借料",
+      "description": "賃借料の支払",
+      "debit_account": "賃借料",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 13
+    },
+    {
+      "id": "miscellaneous",
+      "name": "雑費",
+      "description": "雑費の支払",
+      "debit_account": "雑費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 14
+    },
+    {
+      "id": "unpaid_tax",
+      "name": "未払法人税等",
+      "description": "法人税等の支払",
+      "debit_account": "未払法人税等",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 15
+    },
+    {
+      "id": "unpaid_settlement",
+      "name": "未払金支払",
+      "description": "未払金の支払",
+      "debit_account": "未払金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 16
+    },
+    {
+      "id": "travel_expense",
+      "name": "旅費交通費",
+      "description": "交通費の精算",
+      "debit_account": "旅費交通費",
+      "credit_account": "現金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 17
+    },
+    {
+      "id": "prepaid_outsourcing",
+      "name": "外注費（前払）",
+      "description": "前払外注費の計上",
+      "debit_account": "外注費",
+      "credit_account": "前払費用",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 18
+    },
+    {
+      "id": "salary",
+      "name": "給料手当",
+      "description": "給与の計上",
+      "debit_account": "給料手当",
+      "credit_account": "諸口",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 19
+    },
+    {
+      "id": "withholding",
+      "name": "預り金",
+      "description": "源泉税等の預り",
+      "debit_account": "諸口",
+      "credit_account": "預り金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 20
+    },
+    {
+      "id": "withholding_payment",
+      "name": "預り金支払",
+      "description": "預り金の支払",
+      "debit_account": "預り金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 21
+    },
+    {
+      "id": "bonus_provision",
+      "name": "賞与引当金繰入",
+      "description": "賞与引当金の繰入",
+      "debit_account": "賞与引当金繰入額",
+      "credit_account": "賞与引当金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 22
+    },
+    {
+      "id": "executive_compensation",
+      "name": "役員報酬",
+      "description": "役員報酬の計上",
+      "debit_account": "役員報酬",
+      "credit_account": "未払金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 23
+    },
+    {
+      "id": "interest_income",
+      "name": "受取利息",
+      "description": "利息収入の計上",
+      "debit_account": "未収入金",
+      "credit_account": "受取利息",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 24
+    },
+    {
+      "id": "insurance",
+      "name": "保険料",
+      "description": "保険料の支払",
+      "debit_account": "保険料",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 25
+    },
+    {
+      "id": "land_rent",
+      "name": "地代家賃",
+      "description": "地代家賃の支払",
+      "debit_account": "地代家賃",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 26
+    },
+    {
+      "id": "welfare",
+      "name": "法定福利費",
+      "description": "社会保険料等の計上",
+      "debit_account": "諸口",
+      "credit_account": "法定福利費",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 27
+    },
+    {
+      "id": "consumables",
+      "name": "消耗品費",
+      "description": "消耗品の購入",
+      "debit_account": "消耗品費",
+      "credit_account": "現金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 28
+    },
+    {
+      "id": "long_term_loan",
+      "name": "長期借入金返済",
+      "description": "長期借入金の返済",
+      "debit_account": "長期借入金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 29
+    },
+    {
+      "id": "interest_expense",
+      "name": "支払利息",
+      "description": "借入金利息の支払",
+      "debit_account": "支払利息",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 30
+    },
+    {
+      "id": "welfare_expense",
+      "name": "福利厚生費",
+      "description": "慶祝金・弔慰金等",
+      "debit_account": "福利厚生費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 31
+    },
+    {
+      "id": "utilities",
+      "name": "水道光熱費",
+      "description": "電気・水道・ガス代",
+      "debit_account": "水道光熱費",
+      "credit_account": "買掛金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 32
+    },
+    {
+      "id": "advertising",
+      "name": "広告宣伝費",
+      "description": "パンフレット・印刷物等",
+      "debit_account": "広告宣伝費",
+      "credit_account": "買掛金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 33
+    },
+    {
+      "id": "outsourcing_payable",
+      "name": "外注費（買掛金）",
+      "description": "外注費の計上（買掛金）",
+      "debit_account": "外注費",
+      "credit_account": "買掛金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 34
+    },
+    {
+      "id": "travel_expense_bank",
+      "name": "旅費交通費（振込）",
+      "description": "出張精算（振込）",
+      "debit_account": "旅費交通費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 35
+    },
+    {
+      "id": "land_rent_payable",
+      "name": "地代家賃（買掛金）",
+      "description": "賃料の計上",
+      "debit_account": "地代家賃",
+      "credit_account": "買掛金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 36
+    },
+    {
+      "id": "rent_payable",
+      "name": "賃借料（買掛金）",
+      "description": "リース料の計上",
+      "debit_account": "賃借料",
+      "credit_account": "買掛金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 37
+    },
+    {
+      "id": "bank_fee",
+      "name": "振込手数料",
+      "description": "銀行振込手数料",
+      "debit_account": "雑費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 40
+    },
+    {
+      "id": "receivable_collection",
+      "name": "売掛金回収",
+      "description": "売掛金の入金",
+      "debit_account": "普通預金",
+      "credit_account": "売掛金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 41
+    },
+    {
+      "id": "temporary_received_deposit",
+      "name": "仮受金入金",
+      "description": "入金内容不明時の仮受金",
+      "debit_account": "普通預金",
+      "credit_account": "仮受金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 42
+    },
+    {
+      "id": "corporate_tax_payment",
+      "name": "法人税等支払",
+      "description": "未払法人税等の支払",
+      "debit_account": "未払法人税等",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 43
+    },
+    {
+      "id": "salary_payment",
+      "name": "給与支払",
+      "description": "未払金（給与）の支払",
+      "debit_account": "未払金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 44
+    },
+    {
+      "id": "outsourcing_payment",
+      "name": "外注費支払",
+      "description": "外注費の振込支払",
+      "debit_account": "外注費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 45
+    },
+    {
+      "id": "resident_tax_payment",
+      "name": "住民税納付",
+      "description": "預り金（住民税）の納付",
+      "debit_account": "預り金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 46
+    },
+    {
+      "id": "social_insurance_payment",
+      "name": "社会保険料支払",
+      "description": "法定福利費の支払",
+      "debit_account": "法定福利費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 47
+    },
+    {
+      "id": "lease_payment",
+      "name": "リース料支払",
+      "description": "リース料の振込支払",
+      "debit_account": "リース料",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 48
+    },
+    {
+      "id": "purchase_payment_direct",
+      "name": "仕入代金支払",
+      "description": "仕入高の直接支払",
+      "debit_account": "仕入高",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 49
+    },
+    {
+      "id": "land_rent_payment",
+      "name": "地代家賃支払",
+      "description": "地代家賃の振込支払",
+      "debit_account": "地代家賃",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 50
+    },
+    {
+      "id": "consumables_payment",
+      "name": "消耗品費支払",
+      "description": "消耗品費の振込支払",
+      "debit_account": "消耗品費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 51
+    },
+    {
+      "id": "utilities_payment",
+      "name": "水道光熱費支払",
+      "description": "水道光熱費の振込支払",
+      "debit_account": "水道光熱費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 52
+    },
+    {
+      "id": "communication_expense",
+      "name": "通信費支払",
+      "description": "電話代等の振込支払",
+      "debit_account": "通信費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 53
+    },
+    {
+      "id": "short_term_loan_receipt",
+      "name": "短期貸付金回収",
+      "description": "短期貸付金の回収入金",
+      "debit_account": "普通預金",
+      "credit_account": "短期貸付金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 54
+    },
+    {
+      "id": "short_term_loan_payment",
+      "name": "短期貸付金実行",
+      "description": "短期貸付金の実行",
+      "debit_account": "短期貸付金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 55
+    },
+    {
+      "id": "short_term_borrowing",
+      "name": "短期借入金",
+      "description": "短期借入金の借入",
+      "debit_account": "普通預金",
+      "credit_account": "短期借入金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 56
+    },
+    {
+      "id": "miscellaneous_income",
+      "name": "雑収入",
+      "description": "その他収入の入金",
+      "debit_account": "普通預金",
+      "credit_account": "雑収入",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 57
+    },
+    {
+      "id": "tax_refund",
+      "name": "法人税還付",
+      "description": "未収法人税等の還付入金",
+      "debit_account": "普通預金",
+      "credit_account": "未収法人税等",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 58
+    },
+    {
+      "id": "consumption_tax_payment",
+      "name": "消費税支払",
+      "description": "未払消費税等の支払",
+      "debit_account": "未払消費税等",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 59
+    },
+    {
+      "id": "prepaid_expense_payment",
+      "name": "前払費用支払",
+      "description": "前払費用の支払",
+      "debit_account": "前払費用",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 60
+    },
+    {
+      "id": "fixed_asset_purchase",
+      "name": "固定資産購入",
+      "description": "工具器具備品の購入",
+      "debit_account": "工具器具備品",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 61
+    },
+    {
+      "id": "vehicle_expense",
+      "name": "車両費支払",
+      "description": "車両関連費用の支払",
+      "debit_account": "車両費",
+      "credit_account": "普通預金",
+      "debit_tax_category": "課対仕入10%",
+      "credit_tax_category": "対象外",
+      "priority": 62
+    },
+    {
+      "id": "bank_transfer",
+      "name": "口座振替",
+      "description": "銀行口座間の振替",
+      "debit_account": "普通預金",
+      "credit_account": "普通預金",
+      "debit_tax_category": "対象外",
+      "credit_tax_category": "対象外",
+      "priority": 63
+    }
+  ]
+}

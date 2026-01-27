@@ -1,0 +1,284 @@
+{
+  "vendors": [
+    {
+      "id": "sakura",
+      "name": "さくら会",
+      "sub_account": "さくら会",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "oral_care",
+      "name": "口腔ケア",
+      "sub_account": "口腔ケア",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "happiness",
+      "name": "ハピネス",
+      "sub_account": "ハピネス",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "korankai",
+      "name": "浩蘭会",
+      "sub_account": "浩蘭会",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "jinreikai",
+      "name": "仁鈴会",
+      "sub_account": "仁鈴会",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "rikuru",
+      "name": "リクル",
+      "sub_account": "リクル",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "tw",
+      "name": "TW",
+      "sub_account": "TW",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "youth",
+      "name": "ユース",
+      "sub_account": "ユース",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "oral_care_gakkai",
+      "name": "口腔ケア学会",
+      "sub_account": "口腔ケア学会",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "sokuta",
+      "name": "SOKUTA",
+      "sub_account": "SOKUTA",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "moo",
+      "name": "MOO",
+      "sub_account": "MOO",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "smile",
+      "name": "スマイル",
+      "sub_account": "スマイル",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "smile_kai",
+      "name": "スマイル会",
+      "sub_account": "スマイル会",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "noble",
+      "name": "ノーブ",
+      "sub_account": "ノーブ",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "congen_jinji",
+      "name": "コンゲン人事",
+      "sub_account": "コンゲン人事",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "課税売上10%"
+    },
+    {
+      "id": "congen_dental",
+      "name": "コンゲンデンタル",
+      "sub_account": "コンゲンデンタル",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "課税売上10%"
+    },
+    {
+      "id": "triplewin",
+      "name": "トリプルウィン不動産",
+      "sub_account": "トリプルウィン不動産",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "課税売上10%"
+    },
+    {
+      "id": "congen_consulting",
+      "name": "コンゲンコンサルティング",
+      "sub_account": "コンゲンコンサルティング",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "課税売上10%"
+    },
+    {
+      "id": "ediplus",
+      "name": "エディプラス",
+      "sub_account": "エディプラス",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "densapo",
+      "name": "デンサポ",
+      "sub_account": "デンサポ",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "enax",
+      "name": "エナックス",
+      "sub_account": "エナックス",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "kurumi",
+      "name": "KURUMI",
+      "sub_account": "KURUMI",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "kei",
+      "name": "ケイ",
+      "sub_account": "ケイ",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "matsukubo",
+      "name": "マツクボ",
+      "sub_account": "マツクボ",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "soko",
+      "name": "ソーコー",
+      "sub_account": "ソーコー",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "moto",
+      "name": "モト",
+      "sub_account": "モト",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "hero",
+      "name": "ヒーロ",
+      "sub_account": "ヒーロ",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "iwata",
+      "name": "岩田",
+      "sub_account": "岩田",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "arima",
+      "name": "有馬",
+      "sub_account": "有馬",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "iryo_hakujin",
+      "name": "医療白人",
+      "sub_account": "医療白人",
+      "type": "client",
+      "default_rule": "sales_receivable",
+      "sales_tax_type": "簡売五10%"
+    },
+    {
+      "id": "kojima",
+      "name": "コジマ",
+      "sub_account": "コジマ",
+      "type": "supplier",
+      "default_rule": "purchase",
+      "purchase_tax_type": "課対仕入10%"
+    },
+    {
+      "id": "sasaki",
+      "name": "ササキ",
+      "sub_account": "ササキ",
+      "type": "supplier",
+      "default_rule": "purchase",
+      "purchase_tax_type": "課対仕入10%"
+    },
+    {
+      "id": "ko_dental",
+      "name": "ケーオーデンタル",
+      "sub_account": "ケーオーデンタル",
+      "type": "supplier",
+      "default_rule": "purchase",
+      "purchase_tax_type": "課対仕入10%"
+    },
+    {
+      "id": "kimura_unity",
+      "name": "キムラユニティー",
+      "sub_account": "キムラユニティー",
+      "type": "supplier",
+      "default_rule": "purchase",
+      "purchase_tax_type": "課対仕入10%"
+    },
+    {
+      "id": "koshi",
+      "name": "コーシ",
+      "sub_account": "コーシ",
+      "type": "supplier",
+      "default_rule": "outsourcing_expense",
+      "purchase_tax_type": "課対仕入10%"
+    }
+  ]
+}

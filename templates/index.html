@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>請求書自動仕訳システム</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>請求書自動仕訳システム</h1>
+            <p class="subtitle">弥生会計インポート用CSV自動生成</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="sales">売上・入金</button>
+            <button class="tab" data-tab="purchase">仕入・支払</button>
+            <button class="tab" data-tab="invoice">請求書一括処理</button>
+            <button class="tab" data-tab="entries">仕訳一覧</button>
+            <button class="tab" data-tab="history">履歴</button>
+        </nav>
+
+        <!-- 売上・入金タブ -->
+        <section id="sales" class="tab-content active">
+            <h2>売上・入金処理</h2>
+
+            <div class="form-section">
+                <h3>売上計上（請求書発行時）</h3>
+                <form id="sales-form">
+                    <div class="form-row">
+                        <label>日付</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-row">
+                        <label>取引先</label>
+                        <select name="vendor_name" id="sales-vendor" required>
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>金額</label>
+                        <input type="number" name="amount" required>
+                    </div>
+                    <div class="form-row">
+                        <label>摘要</label>
+                        <input type="text" name="description" placeholder="○月分 経営指導料" required>
+                    </div>
+                    <button type="submit" class="btn primary">売上計上</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h3>入金処理（入金確認時）</h3>
+                <form id="payment-receive-form">
+                    <div class="form-row">
+                        <label>入金日</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-row">
+                        <label>取引先</label>
+                        <select name="vendor_name" id="payment-vendor" required>
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>入金額</label>
+                        <input type="number" name="amount" required>
+                    </div>
+                    <div class="form-row">
+                        <label>入金口座</label>
+                        <select name="bank_id" id="payment-bank">
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>摘要</label>
+                        <input type="text" name="description" placeholder="○月分" required>
+                    </div>
+                    <button type="submit" class="btn primary">入金処理</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 仕入・支払タブ -->
+        <section id="purchase" class="tab-content">
+            <h2>仕入・支払処理</h2>
+
+            <div class="form-section">
+                <h3>仕入計上（請求書受領時）</h3>
+                <form id="purchase-form">
+                    <div class="form-row">
+                        <label>日付</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-row">
+                        <label>仕入先</label>
+                        <select name="vendor_name" id="purchase-vendor" required>
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>金額</label>
+                        <input type="number" name="amount" required>
+                    </div>
+                    <div class="form-row">
+                        <label>摘要</label>
+                        <input type="text" name="description" placeholder="○月分" required>
+                    </div>
+                    <button type="submit" class="btn primary">仕入計上</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h3>支払処理（支払時）</h3>
+                <form id="payment-make-form">
+                    <div class="form-row">
+                        <label>支払日</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-row">
+                        <label>支払先</label>
+                        <select name="vendor_name" id="payment-make-vendor" required>
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>支払額</label>
+                        <input type="number" name="amount" required>
+                    </div>
+                    <div class="form-row">
+                        <label>支払口座</label>
+                        <select name="bank_id" id="payment-make-bank">
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>摘要</label>
+                        <input type="text" name="description" placeholder="○月分" required>
+                    </div>
+                    <button type="submit" class="btn primary">支払処理</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 請求書一括処理タブ -->
+        <section id="invoice" class="tab-content">
+            <h2>請求書一括処理</h2>
+
+            <div class="form-section">
+                <h3>請求書アップロード（複数選択可）</h3>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="upload-area" id="drop-area">
+                        <p>請求書をドラッグ＆ドロップ<br>または</p>
+                        <input type="file" name="files" id="file-input" accept=".pdf,.png,.jpg,.jpeg,.gif,.webp,.bmp,.tiff,.tif,.heic,.heif,image/*" multiple>
+                        <label for="file-input" class="btn">ファイルを選択</label>
+                        <p id="selected-files" class="selected-files"></p>
+                    </div>
+                    <button type="submit" class="btn primary" disabled id="upload-btn">OCR一括処理実行</button>
+                </form>
+
+                <!-- プレビューエリア -->
+                <div id="batch-preview-section" class="result-area" style="display: none;">
+                    <h4>OCR結果プレビュー</h4>
+                    <div id="batch-summary" class="batch-summary"></div>
+                    <div class="table-wrapper">
+                        <table id="preview-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all-preview" checked></th>
+                                    <th>ファイル</th>
+                                    <th>発行元</th>
+                                    <th>日付</th>
+                                    <th>借方</th>
+                                    <th>貸方</th>
+                                    <th>金額</th>
+                                    <th>摘要</th>
+                                    <th>状態</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="preview-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn primary" id="add-selected-btn">選択した仕訳を一括追加</button>
+                        <button type="button" class="btn" id="learn-selected-btn">選択した仕訳を学習して追加</button>
+                        <button type="button" class="btn danger" id="clear-preview-btn">クリア</button>
+                    </div>
+                </div>
+
+                <!-- 勘定科目のオプション（JSで使用） -->
+                <template id="debit-account-options">
+                    <option value="売掛金">売掛金</option>
+                    <option value="仕入高">仕入高</option>
+                    <option value="外注費">外注費</option>
+                    <option value="賃借料">賃借料</option>
+                    <option value="地代家賃">地代家賃</option>
+                    <option value="旅費交通費">旅費交通費</option>
+                    <option value="消耗品費">消耗品費</option>
+                    <option value="広告宣伝費">広告宣伝費</option>
+                    <option value="水道光熱費">水道光熱費</option>
+                    <option value="通信費">通信費</option>
+                    <option value="福利厚生費">福利厚生費</option>
+                    <option value="雑費">雑費</option>
+                    <option value="普通預金">普通預金</option>
+                </template>
+                <template id="credit-account-options">
+                    <option value="売上高">売上高</option>
+                    <option value="買掛金">買掛金</option>
+                    <option value="売掛金">売掛金</option>
+                    <option value="普通預金">普通預金</option>
+                    <option value="現金">現金</option>
+                    <option value="未払金">未払金</option>
+                </template>
+                <template id="tax-category-options">
+                    <option value="対象外">対象外</option>
+                    <option value="課対仕入10%">課対仕入10%</option>
+                    <option value="課対仕入8%">課対仕入8%</option>
+                    <option value="課対仕入10%区分80%">課対仕入10%区分80%</option>
+                    <option value="課税売上10%">課税売上10%</option>
+                    <option value="簡売五10%">簡売五10%</option>
+                    <option value="非課税">非課税</option>
+                </template>
+
+            </div>
+        </section>
+
+        <!-- 仕訳一覧タブ -->
+        <section id="entries" class="tab-content">
+            <h2>仕訳一覧</h2>
+
+            <div class="entries-header">
+                <div class="entries-header-left">
+                    <span id="entry-count">0件</span>
+                    <span id="total-amount" class="total-amount"></span>
+                </div>
+                <div class="entries-header-right">
+                    <button class="btn" id="select-all-entries-btn">全選択</button>
+                    <button class="btn danger" id="delete-selected-btn" disabled>選択削除</button>
+                    <button class="btn primary" id="export-csv-btn" disabled>弥生会計CSV出力</button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="entries-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all-entries"></th>
+                            <th>日付</th>
+                            <th>借方科目</th>
+                            <th>借方補助</th>
+                            <th>借方税区分</th>
+                            <th>借方金額</th>
+                            <th>貸方科目</th>
+                            <th>貸方補助</th>
+                            <th>貸方税区分</th>
+                            <th>貸方金額</th>
+                            <th>摘要</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="entries-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 履歴タブ -->
+        <section id="history" class="tab-content">
+            <h2>仕訳履歴</h2>
+
+            <div class="entries-header">
+                <div class="entries-header-left">
+                    <span id="history-stats"></span>
+                </div>
+                <div class="entries-header-right">
+                    <select id="history-filter">
+                        <option value="">全て</option>
+                        <option value="unexported">未出力のみ</option>
+                        <option value="exported">出力済みのみ</option>
+                    </select>
+                    <button class="btn" id="refresh-history-btn">更新</button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>作成日時</th>
+                            <th>元ファイル</th>
+                            <th>種類</th>
+                            <th>日付</th>
+                            <th>借方</th>
+                            <th>貸方</th>
+                            <th>金額</th>
+                            <th>摘要</th>
+                            <th>学習</th>
+                            <th>出力</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-section" style="margin-top: 20px;">
+                <h3>CSV出力履歴</h3>
+                <div class="table-wrapper">
+                    <table id="exports-table">
+                        <thead>
+                            <tr>
+                                <th>出力日時</th>
+                                <th>ファイル名</th>
+                                <th>件数</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exports-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

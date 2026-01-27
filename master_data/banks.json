@@ -1,0 +1,47 @@
+{
+  "banks": [
+    {
+      "id": "mitsui_motoyama",
+      "name": "三井住友銀行 本山支店",
+      "sub_account": "三井住友・本山",
+      "account_type": "普通預金"
+    },
+    {
+      "id": "aichi_kasugai",
+      "name": "愛知銀行 春日井支店",
+      "sub_account": "愛知・春日井",
+      "account_type": "普通預金"
+    },
+    {
+      "id": "hyakugo_kasugai",
+      "name": "百五銀行 春日井支店",
+      "sub_account": "百五・春日井",
+      "account_type": "普通預金"
+    },
+    {
+      "id": "mitsui",
+      "name": "三井住友銀行",
+      "sub_account": "三井住友",
+      "account_type": "普通預金"
+    },
+    {
+      "id": "nagoya_joshin",
+      "name": "名古屋銀行 浄心支店",
+      "sub_account": "名古屋・浄心",
+      "account_type": "普通預金"
+    },
+    {
+      "id": "juroku_kasugai",
+      "name": "十六銀行 春日井支店",
+      "sub_account": "十六・春日井",
+      "account_type": "普通預金"
+    },
+    {
+      "id": "hyakugo",
+      "name": "百五銀行",
+      "sub_account": "百五銀行",
+      "account_type": "普通預金"
+    }
+  ],
+  "default_bank": "aichi_kasugai"
+}

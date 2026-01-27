@@ -1,0 +1,43 @@
+{
+  "corrections": [
+    {
+      "pattern": {
+        "issuer": "合同会社モト",
+        "recipient": "医療法人さくら会",
+        "description_contains": "2025年10月分 PCリース料"
+      },
+      "correction": {
+        "debit_account": "売掛金",
+        "debit_sub_account": "医療法人日本口腔ケア学会医療部門",
+        "debit_tax_category": "対象外",
+        "credit_account": "売上高",
+        "credit_sub_account": "",
+        "credit_tax_category": "簡売五10%",
+        "invoice_type": "sales"
+      },
+      "count": 3,
+      "created_at": "2026-01-19T17:14:18.036209",
+      "updated_at": "2026-01-19T17:14:18.052007"
+    },
+    {
+      "pattern": {
+        "issuer": "株式会社オーソ・ブレインズ",
+        "recipient": "長久手さくら歯科・矯正歯科",
+        "description_contains": "歯科器具等の販売"
+      },
+      "correction": {
+        "debit_account": "仕入高",
+        "debit_sub_account": "",
+        "debit_tax_category": "課対仕入10%",
+        "credit_account": "買掛金",
+        "credit_sub_account": "株式会社オーソ・ブレインズ",
+        "credit_tax_category": "対象外",
+        "invoice_type": "purchase"
+      },
+      "count": 1,
+      "created_at": "2026-01-19T17:14:18.041899",
+      "updated_at": "2026-01-19T17:14:18.041899"
+    }
+  ],
+  "updated_at": "2026-01-19T17:14:18.052007"
+}

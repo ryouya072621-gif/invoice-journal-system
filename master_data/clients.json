@@ -1,0 +1,28 @@
+{
+  "company_info": {
+    "name": "自社",
+    "group_companies": [
+      "サンポウ",
+      "サンポウホールディングス",
+      "コンゲン",
+      "コンゲンデンタル",
+      "コンゲン人事",
+      "コンゲンコンサルティング",
+      "トリプルウィン不動産"
+    ]
+  },
+  "invoice_settings": {
+    "sales_invoice_keywords": ["御請求書", "請求書", "INVOICE"],
+    "purchase_invoice_keywords": ["御見積書", "納品書", "請求書"]
+  },
+  "judgment_rules": {
+    "sales_conditions": [
+      "発行元が自社グループ",
+      "請求書番号が自社フォーマット"
+    ],
+    "purchase_conditions": [
+      "宛先が自社グループ",
+      "発行元が仕入先マスタに存在"
+    ]
+  }
+}
