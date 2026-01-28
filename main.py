@@ -46,6 +46,23 @@ def allowed_file(filename: str) -> bool:
            ('.' + filename.rsplit('.', 1)[1].lower()) in app.config.get('UPLOAD_EXTENSIONS', [])
 
 
+def safe_int(value, default=0) -> int:
+    """安全に整数変換（カンマ、円、¥などを除去）"""
+    if value is None:
+        return default
+    if isinstance(value, (int, float)):
+        return int(value)
+    # 文字列から数値以外を除去
+    import re
+    cleaned = re.sub(r'[^\d.-]', '', str(value))
+    if not cleaned or cleaned == '-' or cleaned == '.':
+        return default
+    try:
+        return int(float(cleaned))
+    except (ValueError, TypeError):
+        return default
+
+
 @app.route('/')
 def index():
     """メインページ"""
@@ -114,7 +131,7 @@ def upload_invoice():
         else:
             vendor_name = invoice_data.get('issuer', '')
 
-        amount = int(invoice_data.get('total_amount', 0))
+        amount = safe_int(invoice_data.get('total_amount', 0))
         description = invoice_data.get('description', '')
         if not description:
             month = date.month if date else ''
@@ -214,7 +231,7 @@ def create_sales():
         entry = journal_service.create_sales_entry(
             date=date,
             vendor_name=data['vendor_name'],
-            amount=int(data['amount']),
+            amount=safe_int(data['amount']),
             description=data['description'],
             sales_type=data.get('sales_type', 'sales_receivable')
         )
@@ -252,7 +269,7 @@ def receive_payment():
         entry = journal_service.create_payment_received_entry(
             date=date,
             vendor_name=data['vendor_name'],
-            amount=int(data['amount']),
+            amount=safe_int(data['amount']),
             description=data['description'],
             bank_id=data.get('bank_id')
         )
@@ -292,7 +309,7 @@ def create_purchase():
         entry = journal_service.create_purchase_entry(
             date=date,
             vendor_name=data['vendor_name'],
-            amount=int(data['amount']),
+            amount=safe_int(data['amount']),
             description=data['description']
         )
 
@@ -329,7 +346,7 @@ def make_payment():
         entry = journal_service.create_purchase_payment_entry(
             date=date,
             vendor_name=data['vendor_name'],
-            amount=int(data['amount']),
+            amount=safe_int(data['amount']),
             description=data['description'],
             bank_id=data.get('bank_id')
         )
@@ -583,7 +600,7 @@ def upload_expense_report():
                 else:
                     date = datetime.now()
 
-                amount = int(expense.get('amount', 0))
+                amount = safe_int(expense.get('amount', 0))
                 description = expense.get('description', '')
                 company = expense.get('company', expense_data.get('applicant', ''))
 
@@ -660,7 +677,7 @@ def upload_celebration():
         else:
             date = datetime.now()
 
-        amount = int(celebration_data.get('amount', 0))
+        amount = safe_int(celebration_data.get('amount', 0))
         applicant = celebration_data.get('applicant', '')
         event_type = celebration_data.get('event_type', '')
         description = f"{applicant} {event_type}"
@@ -727,7 +744,7 @@ def _generate_entries_from_invoice_data(invoice_data):
     else:
         vendor_name = invoice_data.get('issuer', '')
 
-    amount = int(invoice_data.get('total_amount', 0))
+    amount = safe_int(invoice_data.get('total_amount', 0))
     description = invoice_data.get('description', '')
     if not description:
         month = date.month if date else ''
